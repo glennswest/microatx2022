@@ -147,6 +147,14 @@ module plate() {
 	}
 }
 
+module stack_holes()
+{
+     translate([ 5, 5, 0-p_thickness+0.001 ]) cylinder(r=3.6/2,h=p_thickness*4);
+     translate([ 5, p_d - 20, 0-p_thickness+0.001 ]) cylinder(r=3.6/2,h=p_thickness*4);
+     translate([ p_w_mb-20, 5, 0-p_thickness+0.001 ]) cylinder(r=3.6/2,h=p_thickness*4);
+     translate([ p_w_mb-20, p_d - 20, 0-p_thickness+0.001 ]) cylinder(r=3.6/2,h=p_thickness*4);
+}
+
 module platemb() {
 	difference() {
 		translate([ + p_front_b_decal, (p_d - b_d) / 2, 0 ])
@@ -174,6 +182,8 @@ module platemb() {
 //					cylinder( r=0.1, h=0.0000001 );
 				}
 				translate([ 0, 0, p_thickness+0.001 ]) board_mask(p_thickness*4);
+                stack_holes();
+                
 			}
 		}
 	}
