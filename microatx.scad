@@ -147,13 +147,57 @@ module plate() {
 	}
 }
 
+module feed_holes()
+{
+     translate([ p_w_mb-64, 30, 0-p_thickness+0.01 ]) cube([ p_holder_w*2/3, p_holder_d*1/2, p_thickness*2 ]);
+     translate([ p_w_mb-64, 150, 0-p_thickness+0.01 ]) cube([ p_holder_w*2/3, p_holder_d*1/2, p_thickness*2 ]);
+     
+     translate([ p_w_mb-150, 230, 0-p_thickness+0.01 ]) cylinder(r=7,h=p_thickness*4);
+     translate([ p_w_mb-180, 230, 0-p_thickness+0.01 ]) cylinder(r=7,h=p_thickness*4);
+     translate([ p_w_mb-205, 222, 0-p_thickness+0.01 ]) rotate([0,0,90]) cube([ p_holder_w*2/3, p_holder_d*1/2, p_thickness*2 ]);
+     
+     translate([ p_w_mb-150, 15, 0-p_thickness+0.01 ]) cylinder(r=7,h=p_thickness*4);
+     translate([ p_w_mb-180, 15, 0-p_thickness+0.01 ]) cylinder(r=7,h=p_thickness*4);
+     translate([ p_w_mb-205,  7, 0-p_thickness+0.01 ]) rotate([0,0,90]) cube([ p_holder_w*2/3, p_holder_d*1/2, p_thickness*2 ]);
+   
+
+}
+
 module stack_holes()
 {
      translate([ 5, 5, 0-p_thickness+0.001 ]) cylinder(r=3.6/2,h=p_thickness*4);
      translate([ 5, p_d - 20, 0-p_thickness+0.001 ]) cylinder(r=3.6/2,h=p_thickness*4);
      translate([ p_w_mb-20, 5, 0-p_thickness+0.001 ]) cylinder(r=3.6/2,h=p_thickness*4);
      translate([ p_w_mb-20, p_d - 20, 0-p_thickness+0.001 ]) cylinder(r=3.6/2,h=p_thickness*4);
+ 
+     
+     
 }
+
+module inverse_gearmount(th)
+{  
+    difference(){
+      translate([-40,5.1,0]) cube([90.4+80,15,th]);
+      translate([90,5,-1]) rotate([90,0,180]) gearmount(th+2);
+      }
+}
+
+module gearmount(thewidth)
+{
+    translate([-2,0,0])   cube([14,thewidth,4.25]);
+    translate([8-1.5,0,0])  cube([6,thewidth,19.6]);
+    
+    translate([72,0,0])  cube([15,thewidth,4.25]);
+    //translate([13-1.5,0,20]) rotate([-90,0,0]) cylinder(r=5,h=thewidth); 
+   
+    //translate([82,0,20]) rotate([-90,0,0]) cylinder(r=5,h=thewidth); 
+     
+    translate([82,0,4.2])  cube([5,thewidth,15.8]);
+   
+    translate([14,0,15]) cube([69,thewidth,4.25]);
+    
+}
+
 
 module platemb() {
 	difference() {
@@ -183,12 +227,49 @@ module platemb() {
 				}
 				translate([ 0, 0, p_thickness+0.001 ]) board_mask(p_thickness*4);
                 stack_holes();
+                feed_holes();
+                translate([ p_w_mb+.2, p_d-185, 0-p_thickness+0.001 ])  rotate([0,0,90]) inverse_gearmount(p_thickness*4); 
                 
 			}
 		}
 	}
 }
 
+module platepsu() {
+	difference() {
+		translate([ + p_front_b_decal, (p_d - b_d) / 2, 0 ])
+		{
+			difference()
+			{
+//				minkowski()
+				{
+					translate([ - p_front_b_decal, (p_d - b_d) / -2, 0 ]) {
+						difference() {
+							difference() {
+								union() {
+									cube([ p_w_mb , p_d, p_thickness ]);
+									translate([ -p_holder_w, 0, 0 ]) {
+										cube([ p_holder_w, p_holder_d, p_thickness ]);
+									}
+								}
+								translate([ -p_holder_w/3, p_holder_d/3, -p_thickness/2])
+									cube([ p_holder_w*2/3, p_holder_d*1/2, p_thickness*2 ]);
+								translate([ -p_itemhole_w, p_holder_d - p_itemhole_d*2, -p_thickness/2])
+									cube([ p_itemhole_w, p_itemhole_d, p_thickness*2 ]);
+							}
+						}
+					}
+				}
+                stack_holes();
+                translate([ p_w_mb+.2, p_d-185, 0-p_thickness+0.001 ])  rotate([0,0,90]) inverse_gearmount(p_thickness*4); 
+                /* PSU slots */
+		        translate( [20, p_d - p_slot_d - f_d - 20] )  psu_slots_mask();
+		        /* Disk slots */
+		        translate( [20, p_slot_d + 20] ) disk_slots_mask();
+			}
+		}
+	}
+}
 
 
 module round(o) {
@@ -223,6 +304,13 @@ module plate_round() {
 module plate_roundmb() {
 	difference(){ 
 		platemb();
+		round_mask();
+	}
+}
+
+module plate_roundpsu() {
+	difference(){ 
+		platepsu();
 		round_mask();
 	}
 }
@@ -288,7 +376,15 @@ module shelf() {
 
 //plate_round();
 
-plate_roundmb();
+//plate_roundmb();
+
+/* For 2d projection - dxf export */
+projection(cut = false) plate_roundmb();
+
+//plate_roundpsu();
+
+/* For 2d projection - dxf export */
+//projection(cut = false) plate_roundpsu();
 
 //support();
 
