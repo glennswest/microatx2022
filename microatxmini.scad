@@ -176,28 +176,61 @@ module test_sizes()
       
 
 }
+
+module standoff_core()
+{
+    difference(){
+       cylinder(r=6/2,h=5,$fn=8);
+       translate([0,0,-.1]) cylinder(r=3.4/2,h=5.2,$fn=200);
+       }
+}
+
+module standoffs()
+{
+    translate([0, 0,0]) standoff_core();
+    translate([0,10,0]) standoff_core();
+    translate([0,20,0]) standoff_core();
+    translate([0,30,0]) standoff_core();
+    translate([0,40,0]) standoff_core();
+    translate([10, 0,0]) standoff_core();
+    translate([10,10,0]) standoff_core();
+    translate([10,20,0]) standoff_core();
+    translate([10,30,0]) standoff_core();
+    translate([10,40,0]) standoff_core();
+
+}
 module slot_hole()
 {
-    translate([17.3-4,9.3-9,4]) rotate([90,0,0]) cylinder(r=9.3/2,h=5,$fn=100);
-    translate([17.3-4,9.3-9,2]) rotate([90,0,0]) cylinder(r=9.3/2,h=5,$fn=100);
-    translate([17.3-12,.3,3]) rotate([90,0,0]) cylinder(r=3.2/2,h=5,$fn=100);
+    translate([17.3-4,9.3-9,14]) rotate([90,0,0]) cylinder(r=9.3/2,h=5,$fn=100);
+    translate([17.3-4,9.3-9,12]) rotate([90,0,0]) cylinder(r=9.3/2,h=5,$fn=100);
+    translate([17.3-4,9.3-9,10]) rotate([90,0,0]) cylinder(r=9.3/2,h=5,$fn=100);
+    translate([17.3-4,9.3-9,8]) rotate([90,0,0]) cylinder(r=9.3/2,h=5,$fn=100);
+    translate([17.3-4,9.3-9,6]) rotate([90,0,0]) cylinder(r=9.3/2,h=5,$fn=100);
+    //translate([17.3-4,9.3-9,4]) rotate([90,0,0]) cylinder(r=9.3/2,h=5,$fn=100);
+    //translate([17.3-4,9.3-9,2]) rotate([90,0,0]) cylinder(r=9.3/2,h=5,$fn=100);
+    translate([17.3-12,.3,3])   rotate([90,0,0]) cylinder(r=3.2/2,h=5,$fn=100);
+   
 }
 module backpanel_holder()
 {
     difference(){
-       rotate([90,0,0]) cube([81.28,16,4]);
+       rotate([90,0,0]) translate([0,-3.4,0]) cube([81.28,18,3.3]);
        translate([0,0,0]) slot_hole();
        translate([20.32,0,0]) slot_hole();
        translate([20.32*2,0,0]) slot_hole();
        translate([20.32*3,0,0]) slot_hole();
+       translate([0,0,-.1]) cube([81.28,16,4]);
        
        }
 }
 
 module backpanel_frame_base()
 {
-    cube([b_w,116.2+12,4]);
-    translate([158.75+4.1, 116.2+4.1, -14]) backpanel_holder();
+    difference(){
+      cube([b_w,116.2+12,4]);
+      translate([158.75+4, 117.05, -.1]) cube([81.28,16,5]);
+    }
+    translate([158.75+4.1, 116.2+4.1, 3.4]) backpanel_holder();
 }
 
 
@@ -224,13 +257,16 @@ module backpanel()
     difference(){
         backpanel_frame_base();
         translate([4.1,4.1+12,-.1]) cube([158.75,44.45,5]);
-        translate([4.1+158.75+6.35,4.1+12,-.1]) cube([12.7,101,5]);
-        translate([4.1+158.75+6.35+20.32,4.1+12,-.1]) cube([12.7,101,5]);
-        translate([4.1+158.75+6.35+40.64,4.1+12,-.1]) cube([12.7,101,5]);
-        translate([4.1+158.75+6.35+60.96,4.1+12,-.1]) cube([12.7,101,5]);
+        translate([4.1+158.75+6.35,4.1+12,-.1])       cube([12.7,100.9,5]);
+        translate([4.1+158.75+6.35+20.32,4.1+12,-.1]) cube([12.7,100.9,5]);
+        translate([4.1+158.75+6.35+40.64,4.1+12,-.1]) cube([12.7,100.9,5]);
+        translate([4.1+158.75+6.35+60.96,4.1+12,-.1]) cube([12.7,100.9,5]);
         translate([-4,0,0]) backpanel_holes();
+        
     }
 }
+
+//standoffs();
 
 //backpanel();
 
