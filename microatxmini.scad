@@ -199,18 +199,7 @@ module standoffs()
     translate([10,40,0]) standoff_core();
 
 }
-module slot_hole()
-{
-    translate([17.3-4,9.3-9,14]) rotate([90,0,0]) cylinder(r=9.3/2,h=5,$fn=100);
-    translate([17.3-4,9.3-9,12]) rotate([90,0,0]) cylinder(r=9.3/2,h=5,$fn=100);
-    translate([17.3-4,9.3-9,10]) rotate([90,0,0]) cylinder(r=9.3/2,h=5,$fn=100);
-    translate([17.3-4,9.3-9,8]) rotate([90,0,0]) cylinder(r=9.3/2,h=5,$fn=100);
-    translate([17.3-4,9.3-9,6]) rotate([90,0,0]) cylinder(r=9.3/2,h=5,$fn=100);
-    //translate([17.3-4,9.3-9,4]) rotate([90,0,0]) cylinder(r=9.3/2,h=5,$fn=100);
-    //translate([17.3-4,9.3-9,2]) rotate([90,0,0]) cylinder(r=9.3/2,h=5,$fn=100);
-    translate([17.3-12,.3,3])   rotate([90,0,0]) cylinder(r=3.2/2,h=5,$fn=100);
-   
-}
+
 
 
 //standoffs();

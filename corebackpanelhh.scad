@@ -2,6 +2,18 @@
 
 include <microatxmini.scad>
 
+module slot_hole()
+{
+    translate([17.3-4,9.3-9,14]) rotate([90,0,0]) cylinder(r=9.3/2,h=5,$fn=100);
+    translate([17.3-4,9.3-9,12]) rotate([90,0,0]) cylinder(r=9.3/2,h=5,$fn=100);
+    translate([17.3-4,9.3-9,10]) rotate([90,0,0]) cylinder(r=9.3/2,h=5,$fn=100);
+    translate([17.3-4,9.3-9,8]) rotate([90,0,0]) cylinder(r=9.3/2,h=5,$fn=100);
+    translate([17.3-4,9.3-9,6]) rotate([90,0,0]) cylinder(r=9.3/2,h=5,$fn=100);
+    //translate([17.3-4,9.3-9,4]) rotate([90,0,0]) cylinder(r=9.3/2,h=5,$fn=100);
+    //translate([17.3-4,9.3-9,2]) rotate([90,0,0]) cylinder(r=9.3/2,h=5,$fn=100);
+    translate([17.3-12,.3,2.5])   rotate([90,0,0]) cylinder(r=3.2/2,h=5,$fn=100);
+   
+}
 
 module backpanel_holder()
 {
@@ -19,10 +31,10 @@ module backpanel_holder()
 module backpanel_frame_base()
 {
     difference(){
-      cube([b_w+5,116.2+12,4]);
+      cube([b_w+5,116.2+12-35.2,4]);
       translate([158.75+4, 116.2+9, -.1]) cube([81.28,3.3+1,5]);
     }
-    translate([158.75+4.1, 116.2+12, 3.4]) backpanel_holder();
+    translate([158.75+4.1, 116.2+12-35.2, 3.4]) backpanel_holder();
 }
 
 
@@ -49,10 +61,10 @@ module backpanel()
     difference(){
         backpanel_frame_base();
         translate([4.1,4.1+12,-.1]) cube([158.75,44.45,5]);
-        translate([4.1+158.75+6.35,4.1+12,-.1])       cube([12.7,100.9,5]);
-        translate([4.1+158.75+6.35+20.32,4.1+12,-.1]) cube([12.7,100.9,5]);
-        translate([4.1+158.75+6.35+40.64,4.1+12,-.1]) cube([12.7,100.9,5]);
-        translate([4.1+158.75+6.35+60.96,4.1+12,-.1]) cube([12.7,100.9,5]);
+        translate([4.1+158.75+6.35,4.1+12,-.1])       cube([12.7,100.9-28,5]);
+        translate([4.1+158.75+6.35+20.32,4.1+12,-.1]) cube([12.7,100.9-28,5]);
+        translate([4.1+158.75+6.35+40.64,4.1+12,-.1]) cube([12.7,100.9-28,5]);
+        translate([4.1+158.75+6.35+60.96,4.1+12,-.1]) cube([12.7,100.9-28,5]);
         translate([-4,0,0]) backpanel_holes();
         
     }
