@@ -11,12 +11,6 @@ b_hole_dia = 3.4;
 
 
 
-module board() {
-	%cube([b_w, b_d, b_h]);
-}
-
-
-
 
 
 
