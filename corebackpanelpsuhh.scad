@@ -55,7 +55,7 @@ module fanholes()
     
     for ( x = [1:5:35]){
         for (y=[1:5:35]){
-            translate([x,y,-0.1]) cylinder(r=4/2,h=6,$fn=128);
+            translate([x,y,-0.1]) cylinder(r=3.8/2,h=6,$fn=64);
             }
           }
 
@@ -66,9 +66,9 @@ module psu_back()
     difference(){
        translate([0,0,0])        cube([81.5,40.5,5]);
        translate([3.2,7,-0.1])     cube([24.2,31.6,6]);
-       translate([3.2,4,-0.1])     cylinder(r=4/2,h=6);
-       translate([81.5-5,4,-0.1])    cylinder(r=4/2, h=6);
-       translate([81.5-6,36-1,-0.1])   cylinder(r=4/2,h=6);
+       translate([4,4,-0.1])     cylinder(r=4.1/2,h=6,$fn=64);
+       translate([81.5-6,4-.1,-0.1])    cylinder(r=4.1/2, h=6,$fn=64);
+       translate([81.5-6,36-1.1,-0.1])   cylinder(r=4.1/2,h=6,$fn=64);
        //translate([40,2.5,-0.1])   cube([40,35,6]);
        translate([35,4,0]) fanholes();
        }
