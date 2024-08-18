@@ -70,7 +70,7 @@ module psu_holes()
        translate([81.5-6,36-.9,-0.1])   cylinder(r=4.1/2,h=6,$fn=64);
        //translate([40,2.5,-0.1])   cube([40,35,6]);
        translate([35,4,0]) fanholes();
-       translate([10,6,0.3]) rotate([180,0,0]) linear_extrude(.4) text( "v100",size=4);
+       translate([20,6,3.80]) rotate([0,0,180]) linear_extrude(.5) text( "v114",size=4);
 }
 
 module psu_back()
@@ -85,18 +85,23 @@ module psu_back()
 module side_holes()
 {
     for (i = [15 : 25.5 : 102.3]){
-        translate([0,i,-1]) rotate([0,0,0]) cylinder(r=3.4/2,h=16,$fn=128);
-        translate([89.7-7,i,-1]) rotate([0,0,0]) cylinder(r=3.4/2,h=16,$fn=128);
-        
+        translate([0,i,-1]) rotate([0,0,0]) cylinder(r=4.1/2,h=16,$fn=128);
+        translate([89.7-7,i,-1]) rotate([0,0,0]) cylinder(r=4.1/2,h=16,$fn=128);
+        }
+    for (i = [15 : 25.5 : 89]){
+        translate([i,6,-1]) rotate([0,0,0]) cylinder(r=4.1/2,h=16,$fn=128);
+        //translate([i,102.3-6,-1]) rotate([0,0,0]) cylinder(r=4.1/2,h=16,$fn=128);
         }
 }
 module psu_halfheight()
 {
     difference(){
-      translate([0,0,0])cube([89.7,102.3,4]);
+      translate([0,0.5,0])cube([89.7,102.3-3-0.5,4]);
       translate([48+2,10,0]) rotate([180,180,-90]) psu_holes();
-      translate([3.5,0,0]) side_holes(); 
-      translate([65,20,-1]) rotate([0,0,0]) cylinder(r=16.5/2,h=16,$fn=128);   
+      translate([3.5,-2,0]) side_holes(); 
+      translate([65,24,-1]) rotate([0,0,0]) cylinder(r=16.5/2,h=16,$fn=128);  
+      translate([65,90.3,-1]) rotate([0,0,0]) cylinder(r=4.1/2,h=16,$fn=128);  
+      translate([75,90.3,-1]) rotate([0,0,0]) cylinder(r=4.1/2,h=16,$fn=128);   
       }
 
 }
