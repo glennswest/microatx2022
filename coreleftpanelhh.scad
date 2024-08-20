@@ -10,8 +10,8 @@ module leftpanel_frame_base()
       cube([b_w+5,89.7,4]);
       translate([158.75+4, 116.2+9, -.1]) cube([81.28,3.3+1,5]);
     }
-    translate([0,0,4]) cube([7,89.7,7]); 
-    translate([b_w-2,0,4]) cube([7,89.7,7]); 
+    translate([0,0+5,4]) cube([7,89.7-10,7]); 
+    translate([b_w,0+5,4]) cube([7,89.7-10,7]); 
 }
 
 
@@ -36,7 +36,7 @@ module leftpanel()
     difference(){
         leftpanel_frame_base();
         translate([-4,0,0]) leftpanel_holes();
-        translate([100,20,3.80]) rotate([0,0,180]) linear_extrude(.5) text( "coreleftpanelhh V100",size=4);
+        translate([100,20,3.80]) rotate([0,0,180]) linear_extrude(.5) text( "coreleftpanelhh V101",size=4);
         
     }
 }

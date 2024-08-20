@@ -70,7 +70,7 @@ module psu_holes()
        translate([81.5-6,36-.9,-0.1])   cylinder(r=4.1/2,h=6,$fn=64);
        //translate([40,2.5,-0.1])   cube([40,35,6]);
        translate([35,4,0]) fanholes();
-       translate([20,6,3.80]) rotate([0,0,180]) linear_extrude(.5) text( "v114",size=4);
+       translate([20,6,3.80]) rotate([0,0,180]) linear_extrude(.5) text( "v118",size=4);
 }
 
 module psu_back()
@@ -96,8 +96,8 @@ module side_holes()
 module psu_halfheight()
 {
     difference(){
-      translate([0,0.5,0])cube([89.7,102.3-3-0.5,4]);
-      translate([48+2,10,0]) rotate([180,180,-90]) psu_holes();
+      translate([0,1,0])cube([89.7,102.3-3-1,4]);
+      translate([48+2.5+1.685,10,0]) rotate([180,180,-90]) psu_holes();
       translate([3.5,-2,0]) side_holes(); 
       translate([65,24,-1]) rotate([0,0,0]) cylinder(r=16.5/2,h=16,$fn=128);  
       translate([65,90.3,-1]) rotate([0,0,0]) cylinder(r=4.1/2,h=16,$fn=128);  
