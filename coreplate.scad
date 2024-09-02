@@ -112,7 +112,7 @@ module board_frame()
     board_frame_base();
     side_holes();
    // translate([-1.5,0,-1]) frame_holes(20);
-   translate([0,.5,-1]) frame_holes(20);
+   translate([1,0,-1]) frame_holes(20);
     //top_holes();
     } 
 }
@@ -134,7 +134,7 @@ module frame_holes(theheight)
 for (h = b_holes)
 	{
 		translate([h[0],h[1],0+2])
-			cylinder( r=7/2, h = theheight, center=true, $fn=128 ); 
+			cylinder( r=9.5/2, h = theheight, center=true, $fn=128 ); 
 	}
 
 }
@@ -149,7 +149,7 @@ module board_plate( spacer ) {
     difference(){
         board_plate_base(spacer);
         translate([1.5,0,-1]) core_holes(spacer+10);
-        %translate([5,220,12.7]) rotate([0,0,-90]) linear_extrude(.5) text( "Motherboard Backplate -  Version 10",size=4);
+        translate([5,220,1.7]) rotate([0,0,-90]) linear_extrude(.5) text( "Motherboard Backplate -  Version 10",size=4);
         //base_holes();
         }
      
