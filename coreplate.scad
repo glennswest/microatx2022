@@ -123,8 +123,8 @@ for (h = b_holes)
 	{
 		translate([h[0],h[1],0+2])
 			cylinder( r=b_hole_dia/2, h = theheight, center=true, $fn=128 );
-        translate([h[0],h[1],1.5])
-			cylinder( r=6/2, h = 2, center=true, $fn=6 );    
+        translate([h[0],h[1],1.7])
+			cylinder( r=6.4/2, h = 2, center=true, $fn=6 );    
 	}
 
 }
@@ -149,7 +149,7 @@ module board_plate( spacer ) {
     difference(){
         board_plate_base(spacer);
         translate([1.5,0,-1]) core_holes(spacer+10);
-        translate([5,220,1.7]) rotate([0,0,-90]) linear_extrude(.5) text( "Motherboard Backplate -  Version 10",size=4);
+        //translate([5,220,1.7]) rotate([0,0,-90]) linear_extrude(2) text( "Motherboard Backplate -  Version 14",size=6);
         //base_holes();
         }
      
