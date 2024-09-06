@@ -158,7 +158,7 @@ module board_plate( spacer ) {
 
 
 module coreplate(){
-    board_plate(2);
+    board_plate(5);
     translate([0,0,-7]) board_frame();
 }
 

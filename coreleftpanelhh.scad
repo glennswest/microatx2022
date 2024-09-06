@@ -3,15 +3,16 @@
 include <microatxmini.scad>
 
 
+plen = 89.7;
 
 module leftpanel_frame_base()
 {
     difference(){
-      cube([b_w+5,89.7,4]);
+      cube([b_w+7,plen,4]);
       translate([158.75+4, 116.2+9, -.1]) cube([81.28,3.3+1,5]);
     }
-    translate([0,0+5,4]) cube([7,89.7-10,7]); 
-    translate([b_w,0+5,4]) cube([7,89.7-10,7]); 
+    translate([4,12,4]) cube([7,plen-24,7]); 
+    translate([b_w-4,12,4]) cube([7,plen-24,7]); 
 }
 
 
@@ -22,8 +23,8 @@ module leftpanel_holes()
         translate([i,89.7-7,-1]) rotate([0,0,0]) cylinder(r=4.1/2,h=16,$fn=128);
         }  
    for (i = [15 : 25.5 : 89]){
-        translate([-1,i,7]) rotate([0,90,0]) cylinder(r=4.1/2,h=16,$fn=128);
-        translate([b_w+1,i,7]) rotate([0,90,0]) cylinder(r=4.1/2,h=16,$fn=128);
+        translate([-1,i+3.5,7]) rotate([0,90,0]) cylinder(r=4.1/2,h=16,$fn=128);
+        translate([b_w-8,i+3.5,7]) rotate([0,90,0]) cylinder(r=4.1/2,h=16,$fn=128);
         }     
 
 }
@@ -36,7 +37,7 @@ module leftpanel()
     difference(){
         leftpanel_frame_base();
         translate([-4,0,0]) leftpanel_holes();
-        translate([100,20,3.80]) rotate([0,0,180]) linear_extrude(.5) text( "coreleftpanelhh V101",size=4);
+        translate([100,20,3.80]) rotate([0,0,180]) linear_extrude(.5) text( "coreleftpanelhh V122",size=4);
         
     }
 }
