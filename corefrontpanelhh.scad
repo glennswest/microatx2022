@@ -8,17 +8,27 @@ module trackmount()
     translate([0,16,8]) cube([89.7,5.11,11]);
     translate([0,16,8+11]) cube([89.7,15,4]);
    
-    translate([0,16+74,8]) cube([89.7,5.11,11]);
-    translate([0,16+74,8+11]) cube([89.7,15,4]);
+    translate([0,16+74+1,8]) cube([89.7,5.11,11]);
+    translate([0,16+74+1,8+11]) cube([89.7,15,4]);
 }
     
 module frontpanel_frame_base()
 {
     
       cube([b_w+5,89.7,4]);
-      translate([215,0,-4]) rotate([0,0,90]) trackmount();  
+      translate([215,89.7,8]) rotate([0,180,90]) trackmount();  
     
     
+}
+
+module fanholes()
+{
+    
+    for ( x = [1:5:95]){
+        for (y=[1:5:65]){
+            translate([x,y,-0.1]) cylinder(r=3.8/2,h=6,$fn=64);
+            }
+          }
 }
 
 
@@ -48,7 +58,7 @@ module frontpanel()
         translate([-4,0,0]) frontpanel_holes();
         translate([7+4,89.7-7+2,-1]) cylinder(r=3.4/2,h=16,$fn=128);
         translate([b_w-7+4,89.7-7+2,-1]) cylinder(r=3.4/2,h=16,$fn=128);   
-        
+        translate([10,15,0]) fanholes();
     }
    
    
