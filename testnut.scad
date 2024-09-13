@@ -3,9 +3,18 @@
 
 $fn=100;
 
-difference()
+
+
+module test_sizes()
 {
-       cube([25,25,25/4]);
-       translate([8,12.5,0]) cylinder(r=6.731/2,h=20);
-       translate([18,12.5,0]) cylinder(r=5/2,h=20);
+     difference(){
+      cube([14,30,7.5]);
+      translate([7.5,18,-.1]) cylinder(r=3.4/2,h=9,$fn=128);
+      translate([7.5,18,-.1]) cylinder(r=6.8/2,h=2.6,$fn=6);
+      translate([7.5,6,.6]) cylinder(r=10/2,h=3.2,$fn=128);
+      }
+      
+
 }
+
+rotate([180,0,0]) test_sizes();
