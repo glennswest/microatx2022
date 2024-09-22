@@ -26,38 +26,36 @@ module fanholes()
     
     for ( x = [1:5:95]){
         for (y=[1:5:65]){
-            translate([x,y,-0.1]) cylinder(r=3.8/2,h=6,$fn=64);
+            translate([x,y,-0.1]) cylinder(r=3.8/2,h=6,$fn=32);
             }
           }
 }
 
-
-module frontpanel_holes()
+module psu_holes()
 {
-       //translate([5,    3.5,-1]) rotate([0,0,0]) cylinder(r=3.4/2,h=16,$fn=128);  
-       translate([30.5, 3.5,-1]) rotate([0,0,0]) cylinder(r=3.4/2,h=16,$fn=128);        
-       translate([56.0, 3.5,-1]) rotate([0,0,0]) cylinder(r=3.4/2,h=16,$fn=128);
-       translate([81.5, 3.5,-1]) rotate([0,0,0]) cylinder(r=3.4/2,h=16,$fn=128);
-       translate([107,  3.5,-1]) rotate([0,0,0]) cylinder(r=3.4/2,h=16,$fn=128); 
-       translate([132.5,3.5,-1]) rotate([0,0,0]) cylinder(r=3.4/2,h=16,$fn=128); 
-       translate([158.0,3.5,-1]) rotate([0,0,0]) cylinder(r=3.4/2,h=16,$fn=128);
-       translate([183.5,3.5,-1]) rotate([0,0,0]) cylinder(r=3.4/2,h=16,$fn=128);
-       translate([209.5,3.5,-1]) rotate([0,0,0]) cylinder(r=3.4/2,h=16,$fn=128); 
-       translate([235,  3.5,-1]) rotate([0,0,0]) cylinder(r=3.4/2,h=16,$fn=128);     
+  for (i = [11 : 25.5 : 100]){
+        translate([i,3.5,-1]) rotate([0,0,0]) cylinder(r=3.4/2,h=16,$fn=32);
+        translate([i,89.7-8.5,-1]) rotate([0,0,0]) cylinder(r=3.4/2,h=16,$fn=32);
+        }
+  for (i = [123+25.5 : 25.5 : 180]){
+        translate([i,3.5,-1]) rotate([0,0,0]) cylinder(r=3.4/2,h=16,$fn=32);
+        translate([i,89.7-8.5,-1]) rotate([0,0,0]) cylinder(r=3.4/2,h=16,$fn=32);
+        }      
+  for (i = [225 : 25.5 : 250]){
+        translate([i,3.5,-1]) rotate([0,0,0]) cylinder(r=3.4/2,h=16,$fn=32);
+        translate([i,89.7-8.5,-1]) rotate([0,0,0]) cylinder(r=3.4/2,h=16,$fn=32);
+        }       
 
 }
-// Slot = 12.7mm
-// Half Slot = 6.35
-// 12.7 - 6.35 = 
-// Slot Spacing = 20.32
+
+
+
 module frontpanel()
 {
     difference(){
         frontpanel_frame_base();
         //translate([4.1,4.1+12,-.1]) cube([158.75,44.45,5]);
-        translate([-4,0,0]) frontpanel_holes();
-        translate([7+4,89.7-7+2,-1]) cylinder(r=3.4/2,h=16,$fn=128);
-        translate([b_w-7+4,89.7-7+2,-1]) cylinder(r=3.4/2,h=16,$fn=128);   
+        translate([-4,0,0]) psu_holes(); 
         translate([10,15,0]) fanholes();
     }
    
