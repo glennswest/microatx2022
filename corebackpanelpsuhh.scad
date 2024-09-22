@@ -19,36 +19,15 @@ module backpanel_frame_base()
     }
 }
 
-
-module backpanel_holes()
+module rail_holes()
 {
-       //translate([5,    3.5,-1]) rotate([0,0,0]) cylinder(r=3.4/2,h=16,$fn=128);  
-       translate([30.5, 3.5,-1]) rotate([0,0,0]) cylinder(r=3.4/2,h=16,$fn=128);        
-       translate([56.0, 3.5,-1]) rotate([0,0,0]) cylinder(r=3.4/2,h=16,$fn=128);
-       translate([81.5, 3.5,-1]) rotate([0,0,0]) cylinder(r=3.4/2,h=16,$fn=128);
-       translate([107,  3.5,-1]) rotate([0,0,0]) cylinder(r=3.4/2,h=16,$fn=128); 
-       translate([132.5,3.5,-1]) rotate([0,0,0]) cylinder(r=3.4/2,h=16,$fn=128); 
-       translate([158.0,3.5,-1]) rotate([0,0,0]) cylinder(r=3.4/2,h=16,$fn=128);
-       translate([183.5,3.5,-1]) rotate([0,0,0]) cylinder(r=3.4/2,h=16,$fn=128);
-       translate([209.5,3.5,-1]) rotate([0,0,0]) cylinder(r=3.4/2,h=16,$fn=128); 
-       translate([235,  3.5,-1]) rotate([0,0,0]) cylinder(r=3.4/2,h=16,$fn=128); 
-        
+  for (i = [25.5 : 25.5 : 160]){
+        translate([-1,i,3.5]) rotate([0,90,0]) cylinder(r=3.4/2,h=16,$fn=128);
+        }
 
 }
-// Slot = 12.7mm
-// Half Slot = 6.35
-// 12.7 - 6.35 = 
-// Slot Spacing = 20.32
-module backpanel()
-{
-    difference(){
-        backpanel_frame_base();
-        translate([4.1,4.1+12,-.1]) cube([158.75,44.45,5]);
-        translate([-4,0,0]) backpanel_holes();
-       
-        
-    }
-}
+
+
 
 
 
@@ -86,13 +65,14 @@ module side_holes()
 {
     for (i = [15 : 25.5 : 102.3]){
         translate([0,i,-1]) rotate([0,0,0]) cylinder(r=4.1/2,h=16,$fn=128);
-        translate([89.7-7,i,-1]) rotate([0,0,0]) cylinder(r=4.1/2,h=16,$fn=128);
+        translate([89.7-7-3.5,i,-1]) rotate([0,0,0]) cylinder(r=4.1/2,h=16,$fn=128);
         }
     for (i = [15 : 25.5 : 89]){
         translate([i,6,-1]) rotate([0,0,0]) cylinder(r=4.1/2,h=16,$fn=128);
         //translate([i,102.3-6,-1]) rotate([0,0,0]) cylinder(r=4.1/2,h=16,$fn=128);
         }
 }
+
 module psu_halfheight()
 {
     difference(){
@@ -100,8 +80,8 @@ module psu_halfheight()
       translate([48+2.5+1.685,10,0]) rotate([180,180,-90]) psu_holes();
       translate([3.5,-2,0]) side_holes(); 
       translate([65,24,-1]) rotate([0,0,0]) cylinder(r=16.5/2,h=16,$fn=128);  
-      translate([65,90.3,-1]) rotate([0,0,0]) cylinder(r=4.1/2,h=16,$fn=128);  
-      translate([75,90.3,-1]) rotate([0,0,0]) cylinder(r=4.1/2,h=16,$fn=128);   
+      // Here for top frame
+      %rail_holes();
       }
 
 }
