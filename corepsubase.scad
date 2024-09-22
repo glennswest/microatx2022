@@ -28,16 +28,16 @@ module side_holes()
 {
     for (i = [15 : 25.5 : 102.3]){
         translate([-1,i,3.5]) rotate([0,90,0]) cylinder(r=3.4/2,h=16,$fn=128);
-        translate([5.9,i,3.5]) rotate([0,90,0]) cylinder(r=6/2,h=2,$fn=6);
+        translate([4.9,i,3.5]) rotate([0,90,0]) cylinder(r=6.8/2,h=2.5,$fn=6);
         translate([-1+243.84-8,i,3.5]) rotate([0,90,0]) cylinder(r=3.4/2,h=16,$fn=128);
-        translate([5.9+243.84-14,i,3.5]) rotate([0,90,0]) cylinder(r=6/2,h=2,$fn=6);
+        translate([6.9+243.84-14,i,3.5]) rotate([0,90,0]) cylinder(r=6.8/2,h=2.5,$fn=6);
         }
         
     for (i = [18 : 25.5 : 230]){
         translate([i,-1,3.5]) rotate([-90,0,0]) cylinder(r=3.4/2,h=16,$fn=128);
-        translate([i,5.9,3.5]) rotate([-90,0,0]) cylinder(r=6/2,h=2,$fn=6);
+        translate([i,4.9,3.5]) rotate([-90,0,0]) cylinder(r=6.8/2,h=2.5,$fn=6);
         translate([i,-1+102.3-8,3.5]) rotate([-90,0,0]) cylinder(r=3.4/2,h=16,$fn=128);
-        translate([i,5.9+102.3-14,3.5]) rotate([-90,0,0]) cylinder(r=6/2,h=2,$fn=6);  
+        translate([i,6.9+102.3-14,3.5]) rotate([-90,0,0]) cylinder(r=6.8/2,h=2.5,$fn=6);  
         }
         
 }
