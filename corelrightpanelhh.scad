@@ -11,15 +11,15 @@ module rightpanel_frame_body()
     translate([0,0,4]) cube([b_w+7+2+12-2,6,6]);
     translate([4,13.5,4]) cube([12,plen-24-6,9]); 
     translate([b_w+7+2+12-9+6,6,4]) cube([9.2,plen-10,12]); 
-    translate([b_w+7+2+12-9+6+7,0,0]) cube([2,12,15.5]); 
+    translate([b_w+7+2+12-9+6+7,0,0]) cube([2.2,12,16]); 
       translate([100,20,4]) rotate([0,0,0]) linear_extrude(.5) text( "corerightpanelhh V100",size=8); 
 }
 module rightpanel_frame_base()
 {
     difference(){
       rightpanel_frame_body();
-    
-      translate([b_w+7+2+12-9+7.5,-1,12]) cube([6.1,plen+3,15]); 
+      translate([b_w+7+2+12-9+7.5-2.4,5,4]) cube([8.1,6-2,15]);
+      translate([b_w+7+2+12-9+7.5,-1,10]) cube([6.1,plen+3,15]); 
      
       
     }
