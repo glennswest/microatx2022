@@ -4,8 +4,8 @@ plen = 89.7;
 
 module psutop_body()
 {
-    translate([7,6.7,0]) cube([b_w-2,97+4,5]);
-    translate([20,15,5]) rotate([0,0,90]) linear_extrude(.5) text( "psutop V130",size=6); 
+    translate([7,6.7,0]) cube([b_w-2,97+4,4]);
+    translate([30,30,-0.5]) rotate([0,0,90]) linear_extrude(.5) text( "psutop V130",size=6); 
 }
 
 module psutop_holes()
@@ -25,4 +25,4 @@ module psutop()
         }
 }
 
-rotate([0,0,180]) psutop();
+rotate([0,180,180]) psutop();

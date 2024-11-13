@@ -114,6 +114,7 @@ module board_frame()
    // translate([-1.5,0,-1]) frame_holes(20);
    translate([1,0,-1]) frame_holes(20);
     //top_holes();
+   
     } 
 }
 
@@ -158,7 +159,10 @@ module board_plate( spacer ) {
 
 
 module coreplate(){
-    board_plate(5);
+    difference(){
+       board_plate(5);
+       translate([-0.1,0,2]) cube([4.1,100,3.1]); 
+       }
     translate([0,0,-7]) board_frame();
 }
 
